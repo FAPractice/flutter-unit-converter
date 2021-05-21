@@ -15,9 +15,10 @@ class UnitConverter extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.indigo),
       darkTheme: ThemeData(primarySwatch: Colors.indigo),
       home: LayoutBuilder(builder: (context, constraints) {
-        return constraints.maxHeight > 600 && constraints.maxWidth > 800
-            ? SidebarView()
-            : TabbedView();
+        // return constraints.maxHeight > 600 && constraints.maxWidth > 800
+        //     ? SidebarView()
+        //     : TabbedView();
+        return TabbedView();
       }),
     );
   }
