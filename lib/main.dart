@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-import 'package:unit_converter/Views/Supporting%20Views/sidebar_view.dart';
 import 'package:unit_converter/Views/Supporting%20Views/tabbed_view.dart';
 
 void main() {

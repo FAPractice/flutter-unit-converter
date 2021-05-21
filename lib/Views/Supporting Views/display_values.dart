@@ -7,11 +7,9 @@ class DisplayValues extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(heading, style: Theme.of(context).textTheme.bodyText1),
-        Text(body, style: Theme.of(context).textTheme.bodyText2),
-      ],
+    return ListTile(
+      title: Text(heading, style: Theme.of(context).textTheme.subtitle1),
+      subtitle: Text(body, style: Theme.of(context).textTheme.bodyText2),
     );
   }
 }
