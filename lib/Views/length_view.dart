@@ -1,5 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:unit_converter/constants.dart';
+import 'Supporting Views/unit_chip.dart';
 
 class LengthView extends StatefulWidget {
   final String navigationTitle = "Length";
@@ -11,39 +12,40 @@ class LengthView extends StatefulWidget {
 }
 
 class _LengthViewState extends State<LengthView> {
-  var _selectedIndex = 'children';
-
+  var units = [
+    'Meter',
+    'Kilometer',
+    'Miles',
+    'Inches',
+    'Yards',
+  ];
+  var _selectedChip = 0;
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: ListView(
-        children: [
-          TextField(
-            decoration: InputDecoration(hintText: "Enter Length"),
+    return ListView(
+      children: [
+        TextField(decoration: kThemeTextInputStyle),
+        Divider(),
+        Padding(
+          padding: kListItemPadding,
+          child: Wrap(
+            children: (() {
+              var items = <Widget>[];
+              for (var i = 0; i < units.length; i++) {
+                items.add(UnitChip(
+                  _selectedChip,
+                  i,
+                  (val) => setState(() {
+                    _selectedChip = i;
+                  }),
+                  title: units[i],
+                ));
+              }
+              return items;
+            })(),
           ),
-          Wrap(
-            children: [
-              Padding(
-                  padding: const EdgeInsets.only(right: 8),
-                  child: ChoiceChip(selected: true, label: Text("Meter"))),
-              Padding(
-                  padding: const EdgeInsets.only(right: 8),
-                  child: ChoiceChip(selected: false, label: Text("Kilometer"))),
-              Padding(
-                  padding: const EdgeInsets.only(right: 8),
-                  child: ChoiceChip(selected: false, label: Text("Inch"))),
-              Padding(
-                  padding: const EdgeInsets.only(right: 8),
-                  child: ChoiceChip(selected: false, label: Text("Yard"))),
-              Padding(
-                  padding: const EdgeInsets.only(right: 8),
-                  child: ChoiceChip(selected: false, label: Text("Mile"))),
-            ],
-          )
-        ],
-        padding: const EdgeInsets.all(16.0),
-      ),
-      // ),
+        )
+      ],
     );
   }
 }

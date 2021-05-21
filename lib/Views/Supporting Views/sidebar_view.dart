@@ -16,14 +16,14 @@ class _SidebarViewState extends State<SidebarView> {
   var _items = [LengthView(), VolumeView(), TemperatureView(), TimeView()];
 
   List<NavigationRailDestination> _generateNavItems(items) {
-    List<NavigationRailDestination> nav_items = [];
+    List<NavigationRailDestination> navItems = [];
     for (var item in items) {
-      nav_items.add(NavigationRailDestination(
+      navItems.add(NavigationRailDestination(
         label: Text(item.navigationTitle),
         icon: item.navigationIcon,
       ));
     }
-    return nav_items;
+    return navItems;
   }
 
   @override

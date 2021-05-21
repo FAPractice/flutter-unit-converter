@@ -16,15 +16,15 @@ class _TabbedViewState extends State<TabbedView> {
   var _items = [LengthView(), VolumeView(), TemperatureView(), TimeView()];
 
   List<BottomNavigationBarItem> _generateNavItems(items) {
-    List<BottomNavigationBarItem> nav_items = [];
+    List<BottomNavigationBarItem> navItems = [];
     for (var item in items) {
-      nav_items.add(BottomNavigationBarItem(
+      navItems.add(BottomNavigationBarItem(
         backgroundColor: Theme.of(context).primaryColor,
         label: item.navigationTitle,
         icon: item.navigationIcon,
       ));
     }
-    return nav_items;
+    return navItems;
   }
 
   Widget _getBodyItem(items, index) {

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:unit_converter/constants.dart';
+
+import 'Supporting Views/unit_chip.dart';
 
 class VolumeView extends StatefulWidget {
   final String navigationTitle = "Volume";
@@ -10,10 +13,41 @@ class VolumeView extends StatefulWidget {
 }
 
 class _VolumeViewState extends State<VolumeView> {
+  var units = [
+    'Mililiters',
+    'Liters',
+    'Fluid Ounces',
+    'Pints',
+    'Gallons',
+    'Cups',
+  ];
+  var _selectedChip = 0;
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("Sup"),
+    return ListView(
+      children: [
+        TextField(decoration: kThemeTextInputStyle),
+        Divider(),
+        Padding(
+          padding: kListItemPadding,
+          child: Wrap(
+            children: (() {
+              var items = <Widget>[];
+              for (var i = 0; i < units.length; i++) {
+                items.add(UnitChip(
+                  _selectedChip,
+                  i,
+                  (val) => setState(() {
+                    _selectedChip = i;
+                  }),
+                  title: units[i],
+                ));
+              }
+              return items;
+            })(),
+          ),
+        )
+      ],
     );
   }
 }
